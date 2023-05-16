@@ -2,17 +2,17 @@
   import { ref } from "vue";
   import axios from "axios";
 
-  import Loader from './components/LoaderComponent/Loader.vue'
+  import Loader from "./components/LoaderComponent/Loader.vue";
 
-const isLoaded = ref(true);
-  const result = ref({});
+  const isLoaded = ref(true);
+  const result = ref<any>({});
 
   axios({
     method: "GET",
     url: "https://dog.ceo/api/breeds/image/random",
   })
     .then((resp) => {
-      isLoaded.value =false
+      isLoaded.value = false;
       result.value = resp.data;
     })
     .catch((err) => {
@@ -34,7 +34,7 @@ const isLoaded = ref(true);
 </script>
 
 <template>
-<Loader v-if="isLoaded"/>
+  <Loader v-if="isLoaded" />
   <div class="wrapp-dogs" v-if="!isLoaded">
     <img class="dog-img" :src="result.message" alt="dog" />
     <button class="dog-btn" @click="reloadImg">Новая картинка</button>
