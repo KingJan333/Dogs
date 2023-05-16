@@ -36,6 +36,7 @@
 <template>
   <Loader v-if="isLoaded" />
   <div class="wrapp-dogs" v-if="!isLoaded">
+    <p>For You</p>
     <img class="dog-img" :src="result.message" alt="dog" />
     <button class="dog-btn" @click="reloadImg">Новая картинка</button>
   </div>
